@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍길동 - 자기소개 페이지</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        };
+        // Check saved theme or system preferences before rendering to prevent flickering
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <!-- Google Fonts: Inter & Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        }
+        /* Custom details arrow style */
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 antialiased selection:bg-slate-200 dark:selection:bg-slate-700 selection:text-slate-900 dark:selection:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+    <!-- Sticky Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-colors">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+            <a href="#" class="text-slate-900 dark:text-white font-bold text-lg tracking-tight">KIM HARAM</a>
+            <div class="flex items-center gap-2 sm:gap-4">
+                <nav class="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
+                    <a href="#about" class="px-2 py-1.5 sm:px-2.5 rounded-md hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors">소개</a>
+                    <a href="#experience" class="px-2 py-1.5 sm:px-2.5 rounded-md hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors">경력 및 학력</a>
+                    <a href="#contact" class="px-2 py-1.5 sm:px-2.5 rounded-md hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors">연락처</a>
+                </nav>
+                
+                <!-- Dark / Light Mode Toggle Button -->
+                <button id="themeToggle" type="button" aria-label="다크/라이트 모드 전환" 
+                        class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 transition-colors flex items-center gap-1.5 text-xs font-medium border border-slate-200 dark:border-slate-700">
+                    <span id="themeIcon">🌙</span>
+                    <span id="themeText" class="hidden sm:inline">다크 모드</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-12 flex-grow w-full">
+
+        <!-- Hero & Profile Section -->
+        <section id="about" class="bg-white dark:bg-slate-800/90 rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200/80 dark:border-slate-700/80 space-y-8 transition-colors">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 border-b border-slate-100 dark:border-slate-700/60 pb-8">
+                <!-- Profile Image -->
+                <div class="relative flex-shrink-0">
+                    <img src="얼사_2.jpg" 
+                         onerror="this.src='https://placehold.co/160x160/1e293b/ffffff?text=KH'" 
+                         alt="김하람 프로필 사진" 
+                         class="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl object-cover object-center shadow-sm border border-slate-200 dark:border-slate-700">
+                    <span class="absolute bottom-2 right-2 w-4 h-4 bg-emerald-500 border-2 border-white dark:border-slate-800 rounded-full" title="현재 작업/학습 가능"></span>
+                </div>
+
+                <!-- Basic Intro -->
+                <div class="space-y-3 text-center sm:text-left flex-grow">
+                    <div class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full text-xs font-semibold tracking-wide uppercase">
+                        Student / Tech Enthusiast
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">김하람 (Kim Haram)</h1>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed font-normal text-sm sm:text-base">
+                        호기심이 많고 배우는 것을 좋아하는 학생입니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Details Table & Personal Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">인적 사항</h2>
+                    <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
+                        <table class="w-full text-sm text-left">
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60">
+                                <tr class="bg-slate-50/50 dark:bg-slate-800/40">
+                                    <th class="py-2.5 px-4 font-semibold text-slate-600 dark:text-slate-300 w-28 bg-slate-100/60 dark:bg-slate-700/50">이름</th>
+                                    <td class="py-2.5 px-4 text-slate-800 dark:text-slate-200">김하람</td>
+                                </tr>
+                                <tr>
+                                    <th class="py-2.5 px-4 font-semibold text-slate-600 dark:text-slate-300 w-28 bg-slate-100/60 dark:bg-slate-700/50">생년월일</th>
+                                    <td class="py-2.5 px-4 text-slate-800 dark:text-slate-200">2005년 11월 16일</td>
+                                </tr>
+                                <tr class="bg-slate-50/50 dark:bg-slate-800/40">
+                                    <th class="py-2.5 px-4 font-semibold text-slate-600 dark:text-slate-300 w-28 bg-slate-100/60 dark:bg-slate-700/50">관심 분야</th>
+                                    <td class="py-2.5 px-4 text-slate-800 dark:text-slate-200">AI, IT</td>
+                                </tr>
+                                <tr>
+                                    <th class="py-2.5 px-4 font-semibold text-slate-600 dark:text-slate-300 w-28 bg-slate-100/60 dark:bg-slate-700/50">거주지</th>
+                                    <td class="py-2.5 px-4 text-slate-800 dark:text-slate-200">경기도 성남시 수정구 수정로61번길 17-2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="space-y-4 flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">좌우명</h2>
+                        <blockquote class="p-4 rounded-xl bg-slate-100/70 dark:bg-slate-700/50 border-l-4 border-slate-700 dark:border-slate-400 text-slate-700 dark:text-slate-200 italic text-sm leading-relaxed">
+                            "행동으로 논리를 대변하고 결과로 과정을 입증한다"
+                        </blockquote>
+                    </div>
+
+                    <!-- Collapsible Hobbies -->
+                    <details class="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/40 overflow-hidden transition-all">
+                        <summary class="flex items-center justify-between p-3.5 cursor-pointer text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100/80 dark:hover:bg-slate-700/50 transition-colors select-none">
+                            <span>🔍 취미 및 개인적 관심사</span>
+                            <span class="text-slate-400 dark:text-slate-500 group-open:rotate-180 transition-transform duration-200">▼</span>
+                        </summary>
+                        <div class="px-4 pb-4 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 text-xs text-slate-600 dark:text-slate-300 space-y-1.5">
+                            <p>• <strong>독서:</strong> 기술 서적 및 인문학 서적 읽기</p>
+                            <p>• <strong>산책:</strong> 아이디어가 막힐 때 동네 공원 걷기</p>
+                            <p>• <strong>블로그 작성:</strong> 배운 내용을 주기적으로 문서화하기</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section id="experience" class="bg-white dark:bg-slate-800/90 rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80 dark:border-slate-700/80 space-y-6 transition-colors">
+            <div class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700/60 pb-4">
+                <span class="text-xs font-bold px-2.5 py-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded">02</span>
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white">경력 및 학력</h2>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Education Table -->
+                <div>
+                    <h3 class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">학력 사항</h3>
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-slate-100/70 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 font-semibold border-b border-slate-200 dark:border-slate-700 text-xs uppercase">
+                                <tr>
+                                    <th class="py-3 px-4">기간</th>
+                                    <th class="py-3 px-4">학교명</th>
+                                    <th class="py-3 px-4">전공</th>
+                                    <th class="py-3 px-4">구분</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-700 dark:text-slate-300">
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-700/30">
+                                    <td class="py-3 px-4 font-mono text-xs text-slate-500 dark:text-slate-400">2024 ~ 현재</td>
+                                    <td class="py-3 px-4 font-medium text-slate-900 dark:text-white">가천대학교</td>
+                                    <td class="py-3 px-4">경영학과</td>
+                                    <td class="py-3 px-4"><span class="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded text-xs font-medium">재학 중</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-700/30">
+                                    <td class="py-3 px-4 font-mono text-xs text-slate-500 dark:text-slate-400">2021 ~ 2023</td>
+                                    <td class="py-3 px-4 font-medium text-slate-900 dark:text-white">인성고등학교</td>
+                                    <td class="py-3 px-4">-</td>
+                                    <td class="py-3 px-4"><span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded text-xs">졸업</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Activities Timeline -->
+                <div>
+                    <h3 class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">주요 활동</h3>
+                    <div class="space-y-3">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/40 border border-slate-200/60 dark:border-slate-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h4 class="font-semibold text-slate-900 dark:text-white text-sm">클라이밍 동아리</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-300 mt-0.5">체력 증진 및 동료와의 협동 활동 진행</p>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2.5 py-1 rounded border border-slate-200 dark:border-slate-700 w-fit">2025 ~ 현재</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/40 border border-slate-200/60 dark:border-slate-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h4 class="font-semibold text-slate-900 dark:text-white text-sm">토론 동아리</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-300 mt-0.5">다양한 사회/학술 주제에 대한 논리와 토론 능력 배양</p>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2.5 py-1 rounded border border-slate-200 dark:border-slate-700 w-fit">2026 ~ 현재</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white dark:bg-slate-800/90 rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80 dark:border-slate-700/80 space-y-6 transition-colors">
+            <div class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700/60 pb-4">
+                <span class="text-xs font-bold px-2.5 py-1 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded">03</span>
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white">연락처 및 문의</h2>
+            </div>
+
+            <div class="max-w-xl space-y-4">
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    궁금한 점이 있으시거나 연락이 필요하시다면 아래 이메일로 언제든 편하게 연락해 주세요.
+                </p>
+
+                <div class="space-y-2.5 text-sm">
+                    <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-700/40 border border-slate-100 dark:border-slate-700/60 text-slate-700 dark:text-slate-200 flex items-center justify-between">
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">성명</span>
+                        <span class="font-semibold text-slate-900 dark:text-white">김하람</span>
+                    </div>
+                    <a href="mailto:rlagkfka1212@naver.com" class="flex items-center space-x-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-700/40 border border-slate-100 dark:border-slate-700/60 hover:bg-slate-100/80 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-200 transition-colors">
+                        <span class="text-base">✉️</span>
+                        <span class="font-medium">rlagkfka1212@naver.com</span>
+                    </a>
+                    <a href="mailto:rlagkfka1212@gmail.com" class="flex items-center space-x-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-700/40 border border-slate-100 dark:border-slate-700/60 hover:bg-slate-100/80 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-200 transition-colors">
+                        <span class="text-base">✉️</span>
+                        <span class="font-medium">rlagkfka1212@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 mt-10 transition-colors">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400">
+            <p>&copy; 2026 Kim Haram. All rights reserved.</p>
+            <a href="#" class="hover:text-slate-900 dark:hover:text-slate-100 transition-colors">▲ 맨 위로 돌아가기</a>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+
+        function updateThemeUI() {
+            const isDark = document.documentElement.classList.contains('dark');
+            if (themeIcon) themeIcon.textContent = isDark ? '☀️' : '🌙';
+            if (themeText) themeText.textContent = isDark ? '라이트 모드' : '다크 모드';
+        }
+
+        // Initialize UI state
+        updateThemeUI();
+
+        // Toggle click handler
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                updateThemeUI();
+            });
+        }
+    </script>
+</body>
+</html>
